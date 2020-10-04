@@ -13,6 +13,11 @@ interface CategoryProps {
 export default function Category({ products }: CategoryProps) {
   const router = useRouter();
 
+  // if page is generate or not
+  if (router.isFallback) {
+    return <p>loading...</p>;
+  }
+
   return (
     <>
       <h1>{router.query.slug}</h1>
@@ -26,6 +31,8 @@ export default function Category({ products }: CategoryProps) {
   );
 }
 
+// fallback(true): The Next.js will generate category page dynamic when user access
+// if it is not generated on build
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(`http://localhost:3333/categories`);
   const categories = await response.json();
@@ -38,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
