@@ -8,6 +8,8 @@ This course fully contemplates the best features of the framework, such as:
 - Static site generation;
 - Incremental static generation;
 - Optimizing SEO of pages;
+- Lazy loading components;
+- Dinamic imports;
 
 ## Getting Started
 
